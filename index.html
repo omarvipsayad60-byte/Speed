@@ -5,106 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إلى أميرتي وعد</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
         body {
-            margin: 0;
-            padding: 0;
-            background: #1a1a1a;
-            color: white;
-            font-family: 'Cairo', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            margin: 0; padding: 0; background: #1a1a1a; color: white;
+            font-family: 'Cairo', sans-serif; display: flex;
+            justify-content: center; align-items: center; min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* شاشة القفل */
         #lock-screen {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255, 0, 100, 0.3);
-            z-index: 100;
+            text-align: center; background: rgba(255, 255, 255, 0.1);
+            padding: 40px; border-radius: 20px; backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.3); z-index: 100;
         }
 
         input {
-            padding: 10px;
-            border-radius: 10px;
-            border: none;
-            margin-top: 20px;
-            text-align: center;
-            font-size: 18px;
+            padding: 12px; border-radius: 10px; border: 2px solid #e91e63;
+            margin-top: 20px; text-align: center; font-size: 18px; outline: none;
         }
 
         button {
-            padding: 10px 25px;
-            border-radius: 10px;
-            border: none;
-            background: #e91e63;
-            color: white;
-            cursor: pointer;
-            margin-top: 10px;
-            font-weight: bold;
+            padding: 10px 30px; border-radius: 10px; border: none;
+            background: #e91e63; color: white; cursor: pointer;
+            margin-top: 15px; font-weight: bold; font-size: 18px;
+            transition: 0.3s;
         }
 
-        /* محتوى الرسالة */
+        button:hover { background: #ff4081; transform: scale(1.05); }
+
         #main-content {
-            display: none;
-            max-width: 800px;
-            width: 90%;
-            padding: 40px 20px;
-            text-align: center;
-            animation: fadeIn 2s ease-in;
+            display: none; max-width: 700px; width: 90%;
+            padding: 40px 20px; text-align: center; animation: fadeIn 2s ease-in;
         }
 
         .card {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #e91e63;
-            line-height: 1.8;
-            font-size: 20px;
-            white-space: pre-line;
+            background: rgba(0, 0, 0, 0.7); padding: 30px;
+            border-radius: 20px; border: 1px solid #e91e63;
+            line-height: 1.8; font-size: 19px; white-space: pre-line;
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.2);
         }
 
-        h1 { color: #e91e63; font-size: 2.5rem; text-shadow: 0 0 10px #ff0055; }
+        h1 { color: #e91e63; font-size: 2.2rem; margin-bottom: 20px; }
         
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* قلوب متطايرة */
         .heart {
-            position: fixed;
-            top: -10px;
-            color: #e91e63;
-            font-size: 20px;
-            user-select: none;
-            pointer-events: none;
+            position: fixed; top: -20px; color: #e91e63;
+            font-size: 20px; user-select: none; pointer-events: none;
             animation: fall linear forwards;
         }
 
-        @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); }
-        }
+        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
     </style>
 </head>
 <body>
 
     <div id="lock-screen">
-        <h2>أهلاً بكِ يا ملكة قلبي 👑</h2>
-        <p>اكتبي اسمك لفتح الرسالة:</p>
-        <input type="password" id="password" placeholder="كلمة السر...">
+        <h2 style="margin:0">أهلاً بكِ يا ملكة قلبي 👑</h2>
+        <p>اكتبي اسمك الغالي لفتح الرسالة</p>
+        <input type="text" id="password" placeholder="وعد...">
         <br>
         <button onclick="checkPass()">فتح بـ حب ❤️</button>
-        <p id="error" style="color: #ff4d4d; display: none; margin-top: 10px;">الاسم غلط يا حبيبتي، جربي تاني 😉</p>
+        <p id="error" style="color: #ff4d4d; display: none; margin-top: 15px;">الاسم محتاج تركيز يا حبيبتي 😉</p>
     </div>
 
     <div id="main-content">
         <h1>هيمـا ❤️ وعـد</h1>
         <div class="card">
-            يا حبيبتي يا اجمل ما شوفت عيني 😍 يا اللي كل يوم بمر في حياتي بوجودك بيبقي لي طعم مختلف 🥰 انتي اللي خليتيني افهم يعني ايه حب ويعني ايه اني الاقي حد شايلني من الدنيا كلها وحاططني جوه قلبه 💓 انتي اللي ضحكتك بتنور عتمتي 🌟 وصوتك بيهديني وسط دوشة العالم 🎶 انتي اللي وجودك معايا بيخليني مش محتاج حاجه من الدنيا كلها 👑
+            يا حبيبتي يا اجمل ما شوفت عيني 😍 يا اللي كل يوم بمر في حياتي بوجودك بيبقي لي طعم مختلف 🥰 انتي اللي خليتيني افهم يعني ايه حب ويعني ايه اني الاقي حد شايلني من الدنيا كلها وحاططني جوه قلبه 💓
 
-            انا بحبك حب
+            انتي اللي ضحكتك بتنور عتمتي 🌟 وصوتك بيهديني وسط دوشة العالم 🎶 انتي اللي وجودك معايا بيخليني مش محتاج حاجه من الدنيا كلها 👑 انا بحبك حب مش ممكن يتشرح بحبك حب يخلي قلبي مش ملكي بقا ملكك انتي 💕
+
+            انتي مش مجرد بنت حبيتها انتي حياتي كلها 💞 انتي حلمي اللي اتحقق 💤 انا كل ما بشوف عيونك 👀 بحس اني لقيت العالم كله جواهم.. كل ما بمسك ايدك 🤲 بحس اني ماسك الكون كله.
+
+            انتي ملاكي 👼 انتي نور حياتي 💡 انتي حضن الامان اللي من غير ما المسه بحس اني مطمن 🫂 انا عايز افرحك دايما 🥰 عايز اخليكي تضحكي من قلبك كل يوم 😂 عايز اخليكي ملكة 👑 علي حياتي كلها.
+
+            نفسي ابني معاكي مستقبل 🏡 ونفضل مع بعض لآخر العمر ⏳ نفسي كل يوم اصحى علي صوتك 🎶 وانام وانا مطمن إنك معايا ❤️
+        </div>
+    </div>
+
+    <script>
+        function checkPass() {
+            // سحب النص وتنظيفه من المسافات وتحويله لحروف صغيرة للإنجليزي
+            const pass = document.getElementById('password').value.trim().toLowerCase();
+            
+            // بيقبل وعد بالعربي أو Waad بالإنجليزي
+            if (pass === 'وعد' || pass === 'waad') {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.body.style.background = '#0a0a0a';
+                setInterval(createHeart, 300);
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+    </script>
+</body>
+</html>
