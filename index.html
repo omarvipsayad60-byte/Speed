@@ -3,112 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إلى أميرتي وعد</title>
+    <title>إلى أم يزن - وعد</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap');
 
         body {
-            margin: 0; padding: 0; background: #1a1a1a; color: white;
-            font-family: 'Cairo', sans-serif; display: flex;
-            justify-content: center; align-items: center; min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: #fdf2f2;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        #lock-screen {
-            text-align: center; background: rgba(255, 255, 255, 0.1);
-            padding: 40px; border-radius: 20px; backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(233, 30, 99, 0.3); z-index: 100;
+        /* صفحة تسجيل الدخول */
+        #login-screen {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 100;
         }
 
         input {
-            padding: 12px; border-radius: 10px; border: 2px solid #e91e63;
-            margin-top: 20px; text-align: center; font-size: 18px; outline: none;
+            padding: 10px;
+            border: 2px solid #ff4d6d;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            outline: none;
         }
 
         button {
-            padding: 10px 30px; border-radius: 10px; border: none;
-            background: #e91e63; color: white; cursor: pointer;
-            margin-top: 15px; font-weight: bold; font-size: 18px;
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 15px;
             transition: 0.3s;
         }
 
-        button:hover { background: #ff4081; transform: scale(1.05); }
+        button:hover { background: #c9184a; }
 
+        /* صفحة المحتوى */
         #main-content {
-            display: none; max-width: 700px; width: 90%;
-            padding: 40px 20px; text-align: center; animation: fadeIn 2s ease-in;
+            display: none;
+            max-width: 600px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(255, 77, 109, 0.2);
+            text-align: center;
+            margin: 40px auto;
+            border: 5px solid #ffccd5;
+            position: relative;
         }
 
-        .card {
-            background: rgba(0, 0, 0, 0.7); padding: 30px;
-            border-radius: 20px; border: 1px solid #e91e63;
-            line-height: 1.8; font-size: 19px; white-space: pre-line;
-            box-shadow: 0 0 30px rgba(233, 30, 99, 0.2);
-        }
-
-        h1 { color: #e91e63; font-size: 2.2rem; margin-bottom: 20px; }
+        h1 { color: #ff4d6d; font-family: 'Amiri', serif; font-size: 2.5em; margin-bottom: 10px; }
+        .names { font-size: 1.5em; color: #590d22; margin-bottom: 20px; font-weight: bold; }
         
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .message-box {
+            line-height: 1.8;
+            font-size: 1.1em;
+            color: #333;
+            text-align: justify;
+            padding: 10px;
+        }
 
         .heart {
-            position: fixed; top: -20px; color: #e91e63;
-            font-size: 20px; user-select: none; pointer-events: none;
+            position: fixed;
+            color: #ff4d6d;
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
             animation: fall linear forwards;
+            z-index: 0;
         }
 
-        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        footer { margin-top: 30px; font-weight: bold; color: #ff4d6d; font-size: 1.2em; }
     </style>
 </head>
 <body>
 
-    <div id="lock-screen">
-        <h2 style="margin:0">أهلاً بكِ يا ملكة قلبي 👑</h2>
-        <p>اكتبي اسمك الغالي لفتح الرسالة</p>
-        <input type="text" id="password" placeholder="وعد...">
+    <div id="login-screen">
+        <h1>مرحباً يا وعد ❤️</h1>
+        <p>اكتبي "كلمة السر" عشان تشوفي رسالة هيما ليكِ</p>
+        <input type="password" id="passInput" placeholder="اكتبي هنا...">
         <br>
-        <button onclick="checkPass()">فتح بـ حب ❤️</button>
-        <p id="error" style="color: #ff4d4d; display: none; margin-top: 15px;">الاسم محتاج تركيز يا حبيبتي 😉</p>
+        <button onclick="checkPass()">فتح الرسالة</button>
+        <p id="error" style="color: red; display: none; margin-top: 10px;">كلمة السر غلط يا ست البنات</p>
     </div>
 
     <div id="main-content">
-        <h1>هيمـا ❤️ وعـد</h1>
-        <div class="card">
-            يا حبيبتي يا اجمل ما شوفت عيني 😍 يا اللي كل يوم بمر في حياتي بوجودك بيبقي لي طعم مختلف 🥰 انتي اللي خليتيني افهم يعني ايه حب ويعني ايه اني الاقي حد شايلني من الدنيا كلها وحاططني جوه قلبه 💓
-
-            انتي اللي ضحكتك بتنور عتمتي 🌟 وصوتك بيهديني وسط دوشة العالم 🎶 انتي اللي وجودك معايا بيخليني مش محتاج حاجه من الدنيا كلها 👑 انا بحبك حب مش ممكن يتشرح بحبك حب يخلي قلبي مش ملكي بقا ملكك انتي 💕
-
-            انتي مش مجرد بنت حبيتها انتي حياتي كلها 💞 انتي حلمي اللي اتحقق 💤 انا كل ما بشوف عيونك 👀 بحس اني لقيت العالم كله جواهم.. كل ما بمسك ايدك 🤲 بحس اني ماسك الكون كله.
-
-            انتي ملاكي 👼 انتي نور حياتي 💡 انتي حضن الامان اللي من غير ما المسه بحس اني مطمن 🫂 انا عايز افرحك دايما 🥰 عايز اخليكي تضحكي من قلبك كل يوم 😂 عايز اخليكي ملكة 👑 علي حياتي كلها.
-
-            نفسي ابني معاكي مستقبل 🏡 ونفضل مع بعض لآخر العمر ⏳ نفسي كل يوم اصحى علي صوتك 🎶 وانام وانا مطمن إنك معايا ❤️
+        <h1>إلى ملكة قلبي</h1>
+        <div class="names">هيما ❤️ وعد</div>
+        <hr style="border: 0; height: 1px; background: #ffccd5; margin: 20px 0;">
+        
+        <div class="message-box">
+            عايز أقولك إنك أجمل صدفة حصلت لي في حياتي، مش بنسى اليوم اللي شفتك فيه كان يوم الهنا، القلب عايز يتكلم عنك شوية يا نور عيني يا أغلى ما ليا. أنا بحبك قوي وبطمن في وجودك، وبجد أنا ربنا عوضني بيكي يا فرحة قلبي.
+            <br><br>
+            أجمل وقت بيكون وأنا معاكي وجنبك، بحس إن الدنيا كلها ملكي وأنتي جنبي، وشكراً إنك استحملتيني في الأوقات الوحشة. بحبك بكل تفاصيلك، أنا قلبي بايع كل الناس ومكتفي بيكي يا نور عينيا. أنتي بنتي وصاحبتي وحتة مني، أنتي سندي بعد ربنا يا نبض قلبي الأول والأخير.
+            <br><br>
+            قلبي بيكون واجعني قوي وأنتي بعيدة عني، بحبك يا كل دنيتي، بحبك وبحب كل حتة فيكي. ربنا ما يبعدنا عن بعض ويجمعنا مع بعض في بيت واحد إن شاء الله يا نور عيني، وربنا ما يحرمني منك ويخليكي ليا يا تاج قلبي.
+            <br><br>
+            يا نور عينيا أنا ما طلعتش من الدنيا غير بيكي يا ست البنات، العالم أه كبير وفي بنات كتير بس أنا عيني ماتملتش غير بيكي أنتي. أنتي غنيتيني عن الدنيا دي كلها، ربنا يفرح قلبك ويعوضك كل اللي أنتي بتحبيه يا نور عينيا. يا رب دايماً أشوفك أحسن إنسانة في الدنيا، أنتي الحب والأمان، وأنا معاكي مابقاش عايز حاجة تاني من الدنيا.
+            <br><br>
+            بحب أشوفك وأقعد معاكي عشان ضحكتك الحلوة بترد روحي، وجمال عينيكي بيزغلل لي عينيا. بحبك يا كل ما ليا، بحب أشاركك في كل حاجة وتشاركيني، بحب نبقى واحد عشان أنتي مش أنا وأنتي إحنا واحد مش اتنين. وربنا يجعلنا دايماً واحد وربنا ما يفرق ما بينا أبداً يا نور عينيا يا بنت يا كل ما ليا.
+            <br><br>
+            أول حاجة بحب أعملها أول ما أصحى إن أسمع صوتك، جميل زي لون عينيكي بالظبط. جمال عينيكي هو اللي بيخليني أكتب لك الكلام ده، وعشان أنتي وحشاني نفسي أجيب من السماء حتة وأقدمها لك. ما تزعليش مني يا نور عينيا حتى لو زعلتك، تقلي عليا لأن أنا والله ما أقدر على زعلك يا ست البنات. زعلك غالي على قلبي يا نور عيني، أنتي الفرحة اللي أنا مستنيها، أنتي دوا قلبي ونور عيني، والبنت اللي أنا مش عايز غيرها من الدنيا. بحبك حبي يا نور عينيا، ما حدش في الدنيا دي يستاهل غيرك، أنتي يا أحلى أم يزن في الدنيا.
         </div>
+
+        <footer>بحبك للأبد يا وعد - من هيما</footer>
     </div>
 
     <script>
         function checkPass() {
-            // سحب النص وتنظيفه من المسافات وتحويله لحروف صغيرة للإنجليزي
-            const pass = document.getElementById('password').value.trim().toLowerCase();
-            
-            // بيقبل وعد بالعربي أو Waad بالإنجليزي
-            if (pass === 'وعد' || pass === 'waad') {
-                document.getElementById('lock-screen').style.display = 'none';
+            const pass = document.getElementById('passInput').value;
+            if(pass === "ام يزن") {
+                document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
-                document.body.style.background = '#0a0a0a';
-                setInterval(createHeart, 300);
+                startHearts();
             } else {
                 document.getElementById('error').style.display = 'block';
             }
         }
 
+        // تأثير القلوب المتساقطة
         function createHeart() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
             document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 5000);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        function startHearts() {
+            setInterval(createHeart, 300);
         }
     </script>
 </body>
