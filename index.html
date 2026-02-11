@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى وعدي.. ملكة قلبي 👑❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Reem+Kufi:wght@500&display=swap');
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #1a0a0a 0%, #000000 100%);
+            color: #fff; font-family: 'Cairo', sans-serif;
+            display: flex; justify-content: center; align-items: center; overflow: hidden;
+        }
+
+        /* شاشة الدخول النيون المتطورة */
+        #lock-screen {
+            text-align: center; background: rgba(15, 15, 15, 0.95);
+            padding: 50px 30px; border-radius: 30px;
+            border: 2px solid #ff0055; box-shadow: 0 0 40px #ff0055;
+            width: 85%; max-width: 380px; z-index: 100;
+        }
+
+        input {
+            width: 85%; padding: 15px; margin-top: 30px;
+            border-radius: 15px; border: 1px solid #ff0055;
+            background: #000; color: #fff; text-align: center;
+            font-size: 18px; outline: none; box-shadow: inset 0 0 10px rgba(255, 0, 85, 0.2);
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff0055, #ff5588);
+            color: white; border: none; padding: 12px 50px;
+            margin-top: 25px; border-radius: 50px; cursor: pointer;
+            font-weight: bold; font-size: 1.3rem; transition: 0.4s;
+            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.5);
+        }
+
+        button:hover { transform: scale(1.05); box-shadow: 0 0 30px #ff0055; }
+
+        /* المحتوى الرئيسي */
+        #main-content {
+            display: none; width: 90%; max-width: 700px;
+            height: 85vh; overflow-y: auto; padding: 20px;
+            text-align: center; animation: fadeIn 2s ease;
+        }
+
+        .letter {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px; border-radius: 40px;
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            line-height: 2.2; text-align: right;
+            font-size: 1.2rem; white-space: pre-line;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+        h1 { font-family: 'Reem Kufi', sans-serif; color: #ff0055; font-size: 2.5rem; margin-bottom: 30px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .falling-heart {
+            position: fixed; top: -20px; color: #ff0055;
+            font-size: 20px; user-select: none; pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+
+        /* تخصيص السكرول بار */
+        #main-content::-webkit-scrollbar { width: 5px; }
+        #main-content::-webkit-scrollbar-thumb { background: #ff0055; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <div style="font-size: 50px;">🔐</div>
+        <h2 style="color: #ff0055; margin-top: 10px;">عالم وعد الخاص ❤️</h2>
+        <input type="text" id="passInput" placeholder="كلمة السر السرية...">
+        <br>
+        <button onclick="check()">دخول بـ حب ✨</button>
+        <p id="errorMsg" style="color: #ff4d4d; display: none; margin-top: 25px; font-weight: bold; font-size: 1.1rem;"></p>
+    </div>
+
+    <div id="main-content">
+        <h1>إلى نبض حياتي "وعد" 🌍❤️</h1>
+        <div class="letter">
+            أنا مش بس بحبك، أنا ممتن للقدر اللي جابك في طريقي. أنتي مش مجرد حبيبة، أنتي السكينة اللي كنت بدور عليها طول عمري. جيتي وجمّلتي كل حاجة، وخلّيتي لحياتي طعم ومعنى.
+
+            عايز اقولك حاجه انا مش بحبك 🥺 انا بعشقك 😉😉 ولو في كلمه اكبر من بعشقك كنت قلتها ليكي ❤️🌍 ولو في كلام يوصف حبي ليكي او يوصف حته ربع حبي ليكي.. انا بحبك لدرجة اني مستعد اموت علشانك ❤️ وافضل اعمل المستحيل عشان نفضل مع بعض ❤️❤️🌍
+
+            حتى لو الدنيا كلها قالت مستحيل هفضل احاول عشان والله انتي ليا انا وبس 🌚❤️🩹 وانتي عارفة إن ربنا استجاب لدعواتي وبعتلك ليا هدية.. انتي النعمة اللي بدعي ربي ليل نهار تفضل منورة دنيتي.
+
+            انتي اللي غيرتيني، أنتي اللي ختيني من وسط عالم غريب كنت تايه فيه.. أنتي النور اللي شفته بعد ضلمة طويلة. وعد، أنتي "قرة عيني" وأجمل حاجة حصلتلي في عمري كله.
+
+            ❤️ **بمناسبة ميلاد أحن قلب:** ❤️
+            كل عام وأنتي سبب قوتي وثباتي، كل عام وأنتي أمان قلبي وروحي. وجودك معاي هو هديتي من ربنا.. رح أظل أحبك للأبد، ورح أكون لكِ الأمان اللي ما يتخلى عنك أبداً.. يدي بيدك والله محا أأذي قلبك أبداً، رح أحتويكِ بكل حب.
+
+            **وعهد عليا قدام ربنا.. هتجوزك يا نور عيني وهتكوني أميرة في بيتنا 👰‍♂️🤵‍♂️💍🏠💕**
+
+            هيمـا ❤️ وعـد
+        </div>
+    </div>
+
+    <script>
+        function check() {
+            var val = document.getElementById('passInput').value.trim();
+            // الباسورد: حياتي
+            if (val === "حياتي") {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                setInterval(createHeart, 250);
+            } else {
+                var err = document.getElementById('errorMsg');
+                err.innerText = "الباسورد غلط ي روح امك 😂";
+                err.style.display = 'block';
+            }
+        }
+
+        function createHeart() {
+            var h = document.createElement('div');
+            h.classList.add('falling-heart');
+            h.innerHTML = '❤️';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(h);
+            setTimeout(function(){ h.remove(); }, 5000);
+        }
+    </script>
+</body>
+</html>
