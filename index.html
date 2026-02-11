@@ -3,64 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إلى وعدي 💍</title>
+    <title>إلى أغلى ما في حياتي ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        body { margin: 0; padding: 0; background: #0a0a0a; color: #fff; font-family: 'Cairo', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-x: hidden; }
-        
-        /* شاشة الدخول */
-        #lock-screen { text-align: center; background: #111; padding: 50px 30px; border-radius: 25px; border: 2px solid #ff0055; box-shadow: 0 0 20px #ff0055; z-index: 1000; width: 85%; max-width: 380px; transition: 0.5s; }
-        input { padding: 15px; border-radius: 12px; border: none; margin-top: 25px; text-align: center; font-size: 18px; width: 85%; background: #1a1a1a; color: #ff0055; font-weight: bold; border-bottom: 2px solid #ff0055; outline: none; }
-        button { padding: 12px 40px; border-radius: 50px; border: none; background: #ff0055; color: white; cursor: pointer; margin-top: 25px; font-weight: bold; font-size: 1.2rem; transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4); }
-        button:hover { transform: scale(1.05); background: #ff2e70; }
+        /* التنسيق الأساسي لضمان ظهور المحتوى */
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: #0a0a0a; color: #ffffff;
+            font-family: 'Arial', sans-serif; display: flex;
+            justify-content: center; align-items: center; overflow-x: hidden;
+        }
+
+        /* كارت الدخول */
+        #lock-screen {
+            display: block; text-align: center; background: #1a1a1a;
+            padding: 40px 20px; border-radius: 20px;
+            border: 2px solid #ff0055; box-shadow: 0 0 20px #ff0055;
+            width: 85%; max-width: 350px; position: relative; z-index: 999;
+        }
+
+        input {
+            width: 80%; padding: 12px; margin-top: 20px;
+            border-radius: 10px; border: 1px solid #ff0055;
+            background: #000; color: #fff; text-align: center; font-size: 16px;
+        }
+
+        button {
+            background: #ff0055; color: white; border: none;
+            padding: 12px 30px; margin-top: 20px; border-radius: 25px;
+            cursor: pointer; font-weight: bold; width: 60%;
+        }
 
         /* المحتوى الرئيسي */
-        #main-content { display: none; width: 95%; max-width: 800px; padding: 20px; text-align: center; animation: fadeIn 1.5s ease-in; }
-        .content-box { background: rgba(20, 20, 20, 0.9); padding: 30px; border-radius: 20px; line-height: 1.8; font-size: 1.2rem; border: 1px solid rgba(255, 0, 85, 0.3); text-align: right; white-space: pre-line; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .falling-heart { position: fixed; top: -20px; color: #ff0055; font-size: 20px; user-select: none; pointer-events: none; animation: fall linear forwards; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+        #main-content {
+            display: none; width: 90%; max-width: 600px;
+            padding: 20px; text-align: center;
+        }
+
+        .text-card {
+            background: rgba(255, 255, 255, 0.05); padding: 25px;
+            border-radius: 15px; border: 1px solid #ff0055;
+            line-height: 1.8; text-align: right; font-size: 18px;
+            white-space: pre-line; margin-top: 20px;
+        }
+
+        .heart { position: fixed; top: -20px; color: #ff0055; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh); opacity: 0; } }
     </style>
 </head>
 <body>
 
     <div id="lock-screen">
-        <h2 style="margin: 15px 0;">أهلاً بكِ يا وعد ❤️</h2>
-        <p style="color: #aaa;">اكتبي أي كلمة حب عشان تشوفي المفاجأة</p>
-        <input type="text" id="pass" placeholder="اكتبي وعد أو بحبك...">
+        <h2 style="color: #ff0055; margin: 0;">أهلاً يا وعد ❤️</h2>
+        <p>اكتبي كلمة السر</p>
+        <input type="text" id="passInput" placeholder="اكتبي حياتي...">
         <br>
-        <button onclick="unlock()">فتح بـ حب 💖</button>
+        <button onclick="check()">دخول</button>
+        <p id="errorMsg" style="color: red; display: none; font-size: 14px; margin-top: 15px;"></p>
     </div>
 
     <div id="main-content">
-        <h1 style="color: #ff0055; text-shadow: 0 0 10px #ff0055;">Happy Valentine Day 🌍❤️</h1>
-        <div class="content-box">
-            كل حب وانتي عيدي هو انا مش مستني عيد الحب يجي علشان اكتبلك كلام حلو في يوم زي دا أنتي من يوم ما دخلتي حياتي وانا حياتي بقيت معاكي حاجه تانيه فعلا مش بقالنا كتير بس انا السنه كلها بالنسبة لي عيد حب وانتي معايا حبيت قلبي علشان انتي فيه مش بوست لحبيبتي هو اللي هيبين غلاوتك عندي انت كل حاجه ليا يا حبيبتي وقره عيني أنتي اجمل واحلى واغلى حاجه ربنا رزقني بيها من يوم ما دخلتي حياتي كلها انت الحاجه اللي ما ينفعش تتعوض ولا في منها اثنين اللي زيك ما يتقرنش بحد أصلا لأن اللي زيك قليل طبعا انتي عارفه غلاوتك عندي قد ايه لو قعدت اتكلم عنك مش هيكفي في حقك اي كلام يتقال يكفيني انك عارفه انتي بالنسبة لي ايه انتي اجمل واحلى بنوته حصلت في الدنيا كلها انتي الي حياتي مفهاش حلو غيرك اصلا انا ما حدش بيفرحني غيركانتي الروح اللي ساكنه في قلبي وعقلي اخر حاجه عاوز اقولهلك انك احلي صدفه في عمري كل عام وانتي حبيبتي وقلبيك كل عيد حب وانتي سعادتي وضحكتي كل عيد حب وانتي مبسوطه وديما اكون السبب في سعادتك كل عيد حب وانتي منوره حياتي وعمري وتفضلي نور عيني وحبيبه عمري ويفرحنا يارب عن قريب هابي فلانتين دي ي روح قلبي يديمك في حياتي طول العمر كل سنة وانتي معايا ينور عيني 🥰❤️🧸
-
-            بحبككككككككككككككككككك 🥰🤌🎀 كتير كتير كتيررررر والله وعاوز اعرفك اني هفضل جنبك ومش هسيبك مهما حصل ولا حاجه هتفرقنا عن بعض ابدا 🫂🫀🖇️🏠 من يوم معرفتك والله حسيت معاكي بحاجات كتير اووووووي عوضتيني بجدد والله معرفش كنتي فين من زمان بس مش مهم المهم دلوقتي إن إحنا مع بعض 🥹🌍🧸 وعايزك تعرفي برضو إني قد كلمتي معاكي والله العظيم هتجوزك يانور عيني 👰‍♂️🤵‍♂️💍🏠💕 انا رسمت بيكي حياتي وانتي لونتيها 🥰✨🫶💖 مش هقول بحبك وبعشقك وبموت فيكي كمان لا لان دا مجرد كلام انا هقول دايما ربنا يباركلي فيكي ويخليكي ليا ويحميكي من كل شر 🥺🙏🫂 عيني اتعمت عن كل نساء الارض واخترتك تبقي اميره فوقهم بعد امي انتي اجمل حاجه في حياتي. واختياري ليكي كان شرف كبير ليا 👸🤴❤️❤️💍🏠✨
-            
-            هيمـا ❤️ وعـد
-        </div>
-    </div>
-
-    <script>
-        function unlock() {
-            // أي ضغطة على الزرار هتفتح الموقع فوراً
-            document.getElementById('lock-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-            setInterval(createHeart, 200);
-        }
-
-        function createHeart() {
-            const h = document.createElement('div');
-            h.classList.add('falling-heart');
-            h.innerHTML = '❤️';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
-        }
-    </script>
-</body>
-</html>
+        <h1 style="color: #ff0055;">أحبك يا نبض قلبي ❤️</h1>
+        <div class="text-card">
+            عايز اقولك حاجه انا مش بحبك 🥺 انا بعشقك 😉😉 ولو في كلمه اكبر من بعشقك كنت قلتها ليكي ❤️🌍 ولو في كلام يوصف حبي ليكي.. انا بحبك لدرجة اني مستعد اموت علشانك ❤️ وافضل اعمل المستحيل عشان نبقى مع بعض 🌍❤️
