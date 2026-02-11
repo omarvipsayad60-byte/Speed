@@ -7,10 +7,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
         body { margin: 0; background: #000; color: #fff; font-family: 'Cairo', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
-        #lock { text-align: center; border: 2px solid #ff0055; padding: 35px 20px; border-radius: 25px; box-shadow: 0 0 25px #ff0055; width: 85%; max-width: 350px; background: rgba(10,10,10,0.9); }
-        input { width: 85%; padding: 15px; margin: 20px 0; border-radius: 12px; border: 1px solid #ff0055; background: #1a1a1a; color: #fff; text-align: center; font-size: 18px; outline: none; }
-        button { background: #ff0055; color: #fff; border: none; padding: 12px 40px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1rem; width: 100%; transition: 0.3s; }
-        #content { display: none; padding: 25px; text-align: right; line-height: 2; max-width: 700px; height: 85vh; overflow-y: auto; animation: fadeIn 2s; }
+        #lock { text-align: center; background: rgba(20,20,20,0.9); padding: 40px 20px; border-radius: 25px; border: 2px solid #ff0055; box-shadow: 0 0 30px #ff0055; width: 85%; max-width: 350px; }
+        input { width: 85%; padding: 15px; margin: 20px 0; border-radius: 12px; border: 1px solid #ff0055; background: #1a1a1a; color: #fff; text-align: center; font-size: 20px; outline: none; }
+        button { background: #ff0055; color: #fff; border: none; padding: 12px 40px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.2rem; width: 90%; transition: 0.3s; }
+        #content { display: none; padding: 25px; text-align: right; line-height: 2.2; max-width: 700px; height: 85vh; overflow-y: auto; animation: fadeIn 2s; }
         .heart { position: fixed; color: #ff0055; animation: fall 4s linear forwards; top: -20px; z-index: -1; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -19,49 +19,35 @@
 <body>
     <div id="lock">
         <h2 style="color: #ff0055; margin: 0;">أهلاً يا وعد ❤️</h2>
-        <p style="color: #aaa; font-size: 14px;">اكتبي كلمة السر السرية للدخول</p>
-        <input type="text" id="p" placeholder="كلمة السر هي...">
+        <p style="color: #aaa;">ادخلي اسمك عشان يفتح لك عالمنا</p>
+        <input type="text" id="p" placeholder="اكتبي وعد هنا...">
+        <br>
         <button onclick="go()">دخول بـ حب 💖</button>
         <p id="msg" style="color: #ff4d4d; display: none; margin-top: 20px; font-weight: bold;"></p>
     </div>
 
     <div id="content">
-        <h1 style="text-align: center; color: #ff0055; font-size: 2rem;">بعشقك يا وعد 🌍❤️</h1>
+        <h1 style="text-align: center; color: #ff0055;">بعشقك يا وعد 🌍❤️</h1>
         <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,0,85,0.2);">
-            أنا مش بس بحبك، أنا بعشقك 😉😉 ولو في كلمة أكبر من بعشقك كنت قلتها ليكي ❤️🌍.
-            أنا بحبك لدرجة إني مستعد أموت علشانك ❤️ وأعمل المستحيل عشان نفضل مع بعض.
-            
-            أنتي حياتي بقت حلوة بسببك.. وجودك خلاني أرجع وأحب الحياة 🫂❤️❤️.
-            كل عام وأنتي سبب قوتي وثباتي، كل عام وأنتي معاي وكل عام وأنا أحبك يا روح قلبي.
-            
-            وعد.. أنتي "قرة عيني" وأجمل حاجة حصلتلي في عمري كله. يدي بيدك والله محا أأذي قلبك أبداً، رح أحتويكِ بكل حب.. محظوظة إن قلبي اختارك أنتي 🤍✨.
-            
-            **هتجوزك يا نور عيني وهتكوني أميرة بيتي 💍🏠💕**
+            عايز اقولك حاجه انا مش بحبك 🥺 انا بعشقك 😉😉 ولو في كلمه اكبر من بعشقك كنت قلتها ليكي ❤️🌍.
+            انا بحبك لدرجة اني مستعد اموت علشانك ❤️ وافضل اعمل المستحيل عشان نبقى مع بعض 🌍❤️.
+            أصلاً حياتي بقت حلوه بسببك انتي وجودك خلاني ارجع واحب الحياه 🫂❤️❤️.
+
+            ميلاد أحن قلب بدنيتي حبيبي وسبب قوتي وثباتي وجزء من روحي.. كل عام وأنت سبب فرحتي وكل عام وانت معاي وكل عام وانا احبك ي روح قلبي.
+            يدي بيدك والله محا أأذي قلبك أبدا رح احتويك بكل حب.. محظوظه ان قلبي اختارك انتي 🤍✨.
+
+            **هتجوووزك يا نور عيني وهتكوني أميرة بيتي 💍🏠💕**
         </div>
-        <p style="text-align: center; font-weight: bold; margin-top: 30px; font-size: 1.2rem;">هيمـا ❤️ وعـد</p>
+        <p style="text-align: center; font-weight: bold; margin-top: 30px;">هيمـا ❤️ وعـد</p>
     </div>
 
     <script>
         function go() {
-            var val = document.getElementById('p').value.trim();
-            // الكود ده بيقبل كلمة "حياتي" بأي شكل (مسافات أو حروف)
-            if(val === "حياتي" || val.includes("حياتي")) {
+            var val = document.getElementById('p').value.trim().toLowerCase();
+            // بيقبل كلمة "وعد" بأي شكل
+            if(val === "وعد" || val.includes("وعد")) {
                 document.getElementById('lock').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
                 setInterval(function() {
                     var h = document.createElement('div');
-                    h.className = 'heart'; h.innerHTML = '❤️';
-                    h.style.left = Math.random() * 100 + 'vw';
-                    h.style.animationDuration = (Math.random() * 2 + 3) + 's';
-                    document.body.appendChild(h);
-                    setTimeout(() => h.remove(), 4000);
-                }, 200);
-            } else {
-                var m = document.getElementById('msg');
-                m.innerText = "الباسورد غلط ي روح امك 😂";
-                m.style.display = 'block';
-            }
-        }
-    </script>
-</body>
-</html>
+                    h.className = 'heart'; h
