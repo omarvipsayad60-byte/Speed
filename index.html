@@ -3,64 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إلى أغلى ما في حياتي ❤️</title>
+    <title>إلى أميرتي ندى</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        body { margin: 0; background: #000; color: #fff; font-family: 'Cairo', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
-        #lock { text-align: center; background: rgba(20,20,20,0.95); padding: 40px 20px; border-radius: 25px; border: 2px solid #ff0055; box-shadow: 0 0 30px #ff0055; width: 85%; max-width: 350px; }
-        input { width: 85%; padding: 15px; margin: 20px 0; border-radius: 12px; border: 1px solid #ff0055; background: #1a1a1a; color: #fff; text-align: center; font-size: 20px; outline: none; }
-        button { background: #ff0055; color: #fff; border: none; padding: 12px 40px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.2rem; width: 90%; transition: 0.3s; }
-        #content { display: none; padding: 25px; text-align: right; line-height: 2.2; max-width: 700px; height: 85vh; overflow-y: auto; }
-        .heart { position: fixed; color: #ff0055; animation: fall 4s linear forwards; top: -20px; z-index: -1; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Reem+Kufi:wght@500&display=swap');
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Cairo', sans-serif;
+            background: #0f0c29;
+            background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+            color: white; overflow-x: hidden;
+        }
+
+        /* شاشة القفل */
+        #lock-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 12, 41, 0.98);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999; transition: 0.8s;
+        }
+
+        .lock-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px; border-radius: 20px;
+            backdrop-filter: blur(10px); text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        input {
+            padding: 12px; border-radius: 10px; border: none;
+            margin-top: 15px; width: 200px; text-align: center; font-size: 1.1rem;
+        }
+
+        button {
+            padding: 12px 30px; margin-top: 15px; border-radius: 10px;
+            border: none; background: #ff4b2b; color: white;
+            cursor: pointer; font-weight: bold; transition: 0.3s;
+        }
+
+        button:hover { background: #ff416c; transform: scale(1.05); }
+
+        /* المحتوى الرئيسي */
+        #main-content { opacity: 0; transition: 1.5s; padding: 20px; }
+
+        .container {
+            max-width: 800px; margin: 50px auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 30px; padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 3rem; color: #ff4b2b; text-align: center;
+            margin-bottom: 30px; text-shadow: 0 0 20px rgba(255,75,43,0.5);
+        }
+
+        .heart-icon { font-size: 4rem; text-align: center; display: block; animation: beat 1s infinite; }
+        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+        .text-body {
+            line-height: 2; font-size: 1.25rem; text-align: justify;
+            white-space: pre-line; color: #eee;
+        }
+
+        .highlight { color: #ff416c; font-weight: bold; }
+
+        .footer { text-align: center; margin-top: 50px; font-size: 1.5rem; color: #ff4b2b; }
+
+        /* قلوب الخلفية */
+        .bg-heart {
+            position: absolute; color: rgba(255, 75, 43, 0.3);
+            pointer-events: none; animation: float linear infinite;
+        }
+        @keyframes float {
+            from { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
     </style>
 </head>
 <body>
-    <div id="lock">
-        <h2 style="color: #ff0055; margin: 0;">أهلاً يا وعد ❤️</h2>
-        <p style="color: #aaa;">ادخلي كلمة السر السرية</p>
-        <input type="text" id="p" placeholder="اكتبي الكلمة هنا...">
-        <br>
-        <button onclick="go()">دخول بـ حب 💖</button>
-        <p id="msg" style="color: #ff4d4d; display: none; margin-top: 20px; font-weight: bold;"></p>
+
+    <div id="lock-screen">
+        <div class="lock-box">
+            <h2>موقع خاص بـ "ندي" ❤️</h2>
+            <p>اكتبي اسمك عشان تشوفي المفاجأة</p>
+            <input type="text" id="passInput" placeholder="اكتبي (ندي) هنا...">
+            <br>
+            <button onclick="checkPass()">افتحي قلبي</button>
+            <p id="error" style="color: #ff4b2b; display: none; margin-top: 10px;">الاسم غلط يا قمر ركزي!</p>
+        </div>
     </div>
 
-    <div id="content">
-        <h1 style="text-align: center; color: #ff0055;">بعشقك يا وعد 🌍❤️</h1>
-        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,0,85,0.2);">
-            أنا مش بس بحبك، أنا بعشقك 😉😉 ولو في كلمة أكبر من بعشقك كنت قلتها ليكي ❤️🌍.
-            أنا بحبك لدرجة إني مستعد أموت علشانك ❤️ وأعمل المستحيل عشان نفضل مع بعض.
+    <div id="main-content">
+        <div class="container">
+            <span class="heart-icon">❤️</span>
+            <h1>إلى أغلى ندى في دنيتي</h1>
             
-            أنتي حياتي بقت حلوة بسببك.. وجودك خلاني أرجع وأحب الحياة 🫂❤️❤️.
-            كل عام وأنتي سبب قوتي وثباتي، كل عام وأنتي معاي وكل عام وأنا أحبك يا روح قلبي.
-            
-            وعد.. أنتي "قرة عيني" وأجمل حاجة حصلتلي في عمري كله. يدي بيدك والله محا أأذي قلبك أبداً، رح أحتويكِ بكل حب.. محظوظة إن قلبي اختارك أنتي 🤍✨.
-            
-            **هتجوووزك يا نور عيني وهتكوني أميرة بيتي 💍🏠💕**
+            <div class="text-body">
+                عايز أقول لك إني مش بحبك أنا <span class="highlight">بعشقك</span> ولو في كلمة أكبر من بعشقك كنت قلتها لك ❤️🌍 ولو في كلام يوصف حبي ليكي أو يوصف حتى ربع حبي ليكي أنا بحبك لدرجة إني مستعد أعمل أي حاجة ❤️ وأخسر أي حاجة عشان نفضل مع بعض ❤️❤️🌍 وأفضل أعمل مستحيل عشان نبقى مع بعض 🌍❤️ حتى لو الدنيا كلها قالت مستحيل هفضل أحاول علشان بجد إنتي ليا أنا وبس 🌚❤️
+                
+                وأنا عارف إن في النهاية حبي هو اللي هيفوز على الدنيا باللي فيها وعارف إن ربنا حاسس بيا هيستجيب لدعواتي 🙏💓 وربنا شايف أكيد أنا بحبك إزاي وإنتي بالنسبة لي إيه.. أنا أصلاً حياتي بقت حلوة بسببك إنتي، وجودك خلاني أرجع وأحب الحياة، حبيت حياتي عشان إنتي فيها 🫂❤️❤️ وكل يوم بدعي ربنا يحفظك ليا ويحميكي ويبعد عنك أي حاجة وحشة ✨❤️ ويجعلك من نصيبي.. كل صلاة بدعي إننا نبقى لبعض.
+                
+                عارفة يا حتة من قلبي أنا بخاف على زعلك ليه؟ 🥹 لأن وقسماً بالله ما ليا غيرك ❤️ في الدنيا دي وبحبك أوي.. ممكن أكون كمان والله بحبك أكتر من نفسي 🫂 بخاف على زعلك حتى لو هاجي على نفسي ❤️ المهم عمري ما أشوفك زعلانة 💞.
+                
+                والله العظيم أنا عمري ما هفرط فيكي لأن عمري ما هلاقي زيك ❤️ لأن إنتي جميلة وطيبة ومتربية بدل المرة مليون ❤️ وبتحافظي عليا 🫂 وحنيتك اللي عندي بالدنيا ما بتخليني محتاج حاجة.. وعارفة يا بنوتي أنا تعبت قد إيه لحد ما وصلتك ❤️ فضلت أحاول معاكي لحد آخر يوم عمري بجد ❤️ فوالله يا نونة أنا مليش غيرك في الدنيا دي أبداً ومن غيرك مسواش أي حاجة 🥹 لأن إنتي دنيتي وأكسجيني.
+                
+                ربنا يخليكي ليا يا رب وميحرمنيش منك أبداً يا بنوتي ❤️ اللهم لا تفرّق بيننا 🙌 وعافها واعفو عنها 🙌 وتولها وارزقها بصحتك ونعيمك والرزق الحلال في الدنيا والآخرة 🙌 اللهم آمين.
+            </div>
+
+            <div class="footer">
+                ربنا يخليكي ليا يا أغلى الناس يا روح قلبي <br>
+                <span style="font-size: 2rem;">I Love You So Much 💓</span>
+                <br>
+                <small>حبيبك: حمو</small>
+            </div>
         </div>
-        <p style="text-align: center; font-weight: bold; margin-top: 30px;">هيمـا ❤️ وعـد</p>
     </div>
 
     <script>
-        function go() {
-            var val = document.getElementById('p').value.trim();
-            // الكود دلوقتي بيقبل "وعد" أو "حياتي" عشان نضمن الدخول
-            if(val === "وعد" || val === "حياتي" || val.includes("وعد") || val.includes("حياتي")) {
-                document.getElementById('lock').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-                setInterval(function() {
-                    var h = document.createElement('div');
-                    h.className = 'heart'; h.innerHTML = '❤️';
-                    h.style.left = Math.random() * 100 + 'vw';
-                    document.body.appendChild(h);
-                    setTimeout(() => h.remove(), 4000);
-                }, 200);
+        // دالة التأكد من الباسورد
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            if(pass === "ندي" || pass === "ندى") {
+                document.getElementById('lock-screen').style.top = "-100%";
+                document.getElementById('main-content').style.opacity = "1";
             } else {
-                var m = document.getElementById('msg');
-                m.innerText = "الباسورد غلط ي روح امك 😂";
-                m.style.display = 'block';
+                document.getElementById('error').style.display = "block";
             }
         }
+
+        // إنشاء قلوب طايرة
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 300);
     </script>
 </body>
 </html>
